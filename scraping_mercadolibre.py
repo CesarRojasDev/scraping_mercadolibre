@@ -3,6 +3,7 @@ from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
+import os
 import pandas as pd
 import time
 
@@ -69,6 +70,8 @@ def extraer_productos(driver, url, categoria):
             # Obtener el nombre del producto
             nombre = producto.find_element(By.CSS_SELECTOR, 'a.poly-component__title').text
 
+            url = producto.find_element(By.CSS_SELECTOR, 'a.poly-component__title').get_attribute('href')
+
             # Obtener precios
             precios = producto.find_element(By.CSS_SELECTOR, 'div.poly-price__current')
 
@@ -86,7 +89,8 @@ def extraer_productos(driver, url, categoria):
             productos_list.append({
                 'categoria': categoria,
                 'nombre': nombre,
-                'precio': f"{precio_entero}.{precio_centimos}"
+                'precio': f"{precio_entero}.{precio_centimos}",
+                'url': url
             })
         except:
             print("No se pudo obtener información del producto")
@@ -139,6 +143,8 @@ def main():
                 df_productos = pd.DataFrame(todos_los_productos)
                 df_productos.to_excel(nombre_archivo, index=False)
                 print(f"\n📅 Datos guardados en '{nombre_archivo}'.")
+                time.sleep(2)  # Esperar a que se guarde el archivo
+                os.system("cls")
             else:
                 print("\n❌ No se encontraron productos para guardar.")
 
