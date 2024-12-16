@@ -1,0 +1,51 @@
+# Archivos compilados de Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Entornos virtuales
+env/
+venv/
+ENV/
+*.env
+*.venv
+
+# Archivos de configuración o variables de entorno
+*.env
+*.config
+
+# Archivos de registro y depuración
+*.log
+debug.log
+*.out
+
+# Archivos de datos generados
+*.csv
+*.xlsx
+*.xls
+*.json
+
+# Configuración de IDEs y editores de texto
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Carpeta de cache temporal
+.cache/
+tmp/
+temp/
+
+# Archivos de Selenium
+selenium-screenshot.png
+chromedriver.log
+
+# Archivos del sistema operativo
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Excluir exportaciones grandes
+exports/
+outputs/
